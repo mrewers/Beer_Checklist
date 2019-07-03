@@ -1,0 +1,13 @@
+.list-item {
+  border: 1px solid #e0e0e0;
+  box-shadow: 2px 1px 3px 2px #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+}
+
+.checked {
+  text-decoration: line-through;
+  color: #bdbdbd;
+}
