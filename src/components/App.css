@@ -5,8 +5,7 @@ html {
 }
 
 body {
-  margin: 0 auto;
-  max-width: 1100px;
+  margin: 0;
   padding: 1rem;
 }
 
@@ -34,11 +33,11 @@ h3 {
   margin: 0;
 }
 
+h4 {
+  font-size: 1rem;
+}
+
 hr {
   color: #e0e0e0;
   margin-bottom: 1rem;
-}
-
-.app-header {
-  text-align: center;
 }

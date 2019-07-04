@@ -51,6 +51,7 @@ module.exports = {
   ],
   devServer: {
     contentBase: paths.appPublic,
+    historyApiFallback: true,
     hot: true,
   },
 };
