@@ -1,0 +1,43 @@
+.toggle {
+  display: inline-block;
+  margin: 0.5rem;
+  position: relative;
+}
+
+.toggle-container {
+  display: flex;
+}
+
+.toggle-track {
+  background-color: #bdbdbd;
+  border-radius: 20px;
+  display: inline-block;
+  height: 20px;
+  position: absolute;
+  transition: all 0.3s;
+  width: 40px;
+}
+
+.toggle-handle {
+  background-color: white;
+  border-radius: 18px;
+  content: '';
+  height: 18px;
+  left: 1px;
+  position: absolute;
+  top: 1px;
+  transition: all 0.3s;
+  width: 18px;
+}
+
+.toggle-handle.toggled {
+  transform: translateX(20px);
+}
+
+.toggle-label {
+  margin: 0.5rem 0;
+}
+
+.toggle-track.toggled {
+  background-color: #7983ff;
+}
