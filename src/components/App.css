@@ -5,10 +5,13 @@ html {
 }
 
 body {
+  color: #1c1d23;
   margin: 0;
   padding: 1rem;
 }
 
+button,
+label,
 p {
   font-family: 'Rubik', sans-serif;
   margin: 0;
@@ -19,7 +22,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+legend {
   font-family: 'Trirong', serif;
 }
 
@@ -40,4 +44,12 @@ h4 {
 hr {
   color: #e0e0e0;
   margin-bottom: 1rem;
+}
+
+input,
+option,
+select {
+  border: 1px solid #e0e0e0;
+  box-shadow: inset 0px 0px 3px #e0e0e0;
+  font-family: 'Rubik', sans-serif;
 }
