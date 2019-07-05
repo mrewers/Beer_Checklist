@@ -15,7 +15,7 @@ const ListItem = ({ beer }) => {
 
   return (
     <article className='list-item'>
-      <input type='checkbox' checked={checked} onChange={handleCheckbox} />
+      <input className='list-item-checkbox' type='checkbox' checked={checked} onChange={handleCheckbox} />
       <p className={isActive}>{beer.brewery || ''}</p>
       <p className={isActive}>{beer.name}</p>
       {/* <a className={isActive} href=''>
