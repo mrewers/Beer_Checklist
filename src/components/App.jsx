@@ -1,8 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import AdminPage from './Pages/AdminPage/AdminPage';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import MainPage from './Pages/MainPage/MainPage';
+
+import * as ROUTES from '../constants/routes';
 
 import './App.css';
 
@@ -10,8 +13,9 @@ const App = () => (
   <div className='app-routes'>
     <BrowserRouter>
       <Switch>
-        <Route path='/login' component={LoginPage} />
-        <Route path='/' component={MainPage} />
+        <Route path={ROUTES.LOGIN} component={LoginPage} />
+        <Route path={ROUTES.ADMIN} component={AdminPage} />
+        <Route path={ROUTES.MAIN} component={MainPage} />
       </Switch>
     </BrowserRouter>
   </div>
