@@ -2,6 +2,7 @@ const webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const paths = require('./paths');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: paths.appIndexJs,
@@ -47,6 +48,10 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: './css/rip.css',
+    }),
+    new Dotenv({
+      path: paths.dotenv,
+      safe: true,
     }),
   ],
   devServer: {
