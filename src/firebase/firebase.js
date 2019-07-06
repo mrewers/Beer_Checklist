@@ -26,7 +26,7 @@ class Firebase {
   }
 
   // Sign into app
-  doSignIn = () => {
+  firebaseSignIn = () => {
     this.auth
       .signInWithPopup(this.provider)
       .then(result => {
@@ -39,12 +39,28 @@ class Firebase {
       .catch(error => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        const email = error.email;
-        const credential = error.credential;
+        // const email = error.email;
+        // const credential = error.credential;
 
         // eslint-disable-next-line no-console
         console.log(`${errorCode}: ${errorMessage}`);
       });
+  };
+
+  // Get all groups from the database
+  firebaseGetGroups = () => {
+    return this.db.collection('groups');
+  };
+
+  // Add a group to the database
+  firebaseAddGroup = title => {
+    this.db
+      .collection('groups')
+      .add({
+        title,
+      })
+      .then(docRef => console.log(`Group ${title} added with id: ${docRef.id}`))
+      .catch(error => console.error(`Error adding record: ${error}`));
   };
 
   // Add a beer to the database
