@@ -1,7 +1,9 @@
-# Environment
-.env
-dist/stats.json
+# Builds
+dist/
 
 # Dependencies
 node_modules/
 npm-debug.log*
+
+# Environment
+.env
