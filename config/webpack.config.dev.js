@@ -44,6 +44,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
+      favicon: `${paths.appStatic}/iip_logo.png`,
       template: paths.appHtml,
     }),
     new MiniCssExtractPlugin({
