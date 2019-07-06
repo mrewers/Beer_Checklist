@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { object } from 'prop-types';
 
 import Form from '../Form/Form';
+import GroupsDropdown from '../../GroupsDropdown/GroupsDropdown';
 import { withFirebase } from '../../../firebase';
 
 class AddBeerForm extends Component {
@@ -9,34 +10,15 @@ class AddBeerForm extends Component {
     beer: '',
     brewery: '',
     group: '',
-    groups: [],
     price: '',
   };
 
-  componentDidMount() {
-    const { firebaseGetGroups } = this.props.firebase;
-    const groups = [];
-
-    firebaseGetGroups()
-      .get()
-      .then(querySnapshot =>
-        querySnapshot.forEach(doc => {
-          const group = {
-            id: doc.id,
-            title: doc.data().title,
-          };
-          groups.push(group);
-        })
-      );
-
-    this.setState({ groups });
-  }
-
   render() {
-    const { beer, brewery, group, groups, price } = this.state;
+    const { beer, brewery, group, price } = this.state;
 
     const handleChange = e => {
       const { name, value } = e.target;
+
       this.setState({
         [name]: value,
       });
@@ -82,23 +64,11 @@ class AddBeerForm extends Component {
             value={price}
           />
         </label>
-        <label className='form-label' htmlFor='group'>
-          Add to Group:
-          <select
-            id='group'
-            name='group'
-            onChange={handleChange}
-            onBlur={handleChange}
-            value={group}
-          >
-            <option value=''>Select a group</option>
-            {groups.map(group => (
-              <option key={group.id} value={group.title}>
-                {group.title}
-              </option>
-            ))}
-          </select>
-        </label>
+        <GroupsDropdown
+          callback={handleChange}
+          label='Add to Group:'
+          value={group}
+        />
       </Form>
     );
   }

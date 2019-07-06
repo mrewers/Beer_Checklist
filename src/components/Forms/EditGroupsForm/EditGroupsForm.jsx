@@ -2,49 +2,40 @@ import React, { Component } from 'react';
 import { object } from 'prop-types';
 
 import Form from '../Form/Form';
+import GroupsDropdown from '../../GroupsDropdown/GroupsDropdown';
 import { withFirebase } from '../../../firebase';
 
 class EditGroupsForm extends Component {
   state = {
-    groups: [],
-    selectedGroup: '',
+    group: '',
     title: '',
   };
 
-  componentDidMount() {
-    const { firebaseGetGroups } = this.props.firebase;
-    const groups = [];
-
-    firebaseGetGroups()
-      .get()
-      .then(querySnapshot =>
-        querySnapshot.forEach(doc => {
-          const group = {
-            id: doc.id,
-            title: doc.data().title,
-          };
-          groups.push(group);
-        })
-      );
-
-    this.setState({ groups });
-  }
-
   render() {
-    const { groups, title } = this.state;
+    const { group, title } = this.state;
     const { firebaseAddGroup } = this.props.firebase;
 
     const handleChange = e => {
-      const { value } = e.target;
+      const { name, value } = e.target;
 
       this.setState({
-        selectedGroup: value,
+        [name]: value,
       });
     };
 
     const handleSubmit = e => {
+      const { title, group } = this.state;
+
       e.preventDefault();
-      firebaseAddGroup(this.state.title);
+
+      if (title) {
+        firebaseAddGroup(title);
+      }
+      if (group) {
+        console.log(group);
+      }
+
+      this.setState({ group: '', title: '' });
     };
 
     return (
@@ -60,22 +51,11 @@ class EditGroupsForm extends Component {
             value={title}
           />
         </label>
-        <label className='form-label' htmlFor='title'>
-          Delete Group:
-          <select
-            id='group'
-            name='group'
-            onChange={handleChange}
-            onBlur={handleChange}
-          >
-            <option value=''>Select a group</option>
-            {groups.map(group => (
-              <option key={group.id} value={group.title}>
-                {group.title}
-              </option>
-            ))}
-          </select>
-        </label>
+        <GroupsDropdown
+          callback={handleChange}
+          label='Delete Group:'
+          value={group}
+        />
       </Form>
     );
   }
