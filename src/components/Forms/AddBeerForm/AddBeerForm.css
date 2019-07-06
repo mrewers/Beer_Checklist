@@ -1,7 +1,7 @@
 .add-beer-form-fields {
   display: grid;
-  grid-template-columns: 2fr 2fr 1fr;
-  grid-column-gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1.5rem;
   margin: 1rem 0;
 }
 
