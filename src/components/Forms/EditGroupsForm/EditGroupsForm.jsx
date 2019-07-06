@@ -4,13 +4,11 @@ import { object } from 'prop-types';
 import Form from '../Form/Form';
 import { withFirebase } from '../../../firebase';
 
-class AddBeerForm extends Component {
+class EditGroupsForm extends Component {
   state = {
-    beer: '',
-    brewery: '',
-    group: '',
     groups: [],
-    price: '',
+    selectedGroup: '',
+    title: '',
   };
 
   componentDidMount() {
@@ -33,63 +31,42 @@ class AddBeerForm extends Component {
   }
 
   render() {
-    const { beer, brewery, group, groups, price } = this.state;
+    const { groups, title } = this.state;
+    const { firebaseAddGroup } = this.props.firebase;
 
     const handleChange = e => {
-      const { name, value } = e.target;
+      const { value } = e.target;
+
       this.setState({
-        [name]: value,
+        selectedGroup: value,
       });
     };
 
     const handleSubmit = e => {
       e.preventDefault();
-      console.log(this.state);
+      firebaseAddGroup(this.state.title);
     };
 
     return (
-      <Form legend='Add A Beer' submit='Add Beer' onSubmit={handleSubmit}>
-        <label className='form-label' htmlFor='beer'>
-          Beer Name:
+      <Form legend='Edit Groups' submit='Add Group' onSubmit={handleSubmit}>
+        <label className='form-label' htmlFor='title'>
+          Add Group:
           <input
-            id='beer'
-            name='beer'
+            id='title'
+            name='title'
             onChange={handleChange}
-            placeholder='Fancy Brew IPA'
+            placeholder='New Group'
             type='text'
-            value={beer}
+            value={title}
           />
         </label>
-        <label className='form-label' htmlFor='brewery'>
-          Brewery:
-          <input
-            id='brewery'
-            name='brewery'
-            onChange={handleChange}
-            placeholder='Fancy Brewing Co.'
-            type='text'
-            value={brewery}
-          />
-        </label>
-        <label className='form-label' htmlFor='price'>
-          Beer Price:
-          <input
-            id='price'
-            name='price'
-            onChange={handleChange}
-            placeholder='$7.00'
-            type='text'
-            value={price}
-          />
-        </label>
-        <label className='form-label' htmlFor='group'>
-          Add to Group:
+        <label className='form-label' htmlFor='title'>
+          Delete Group:
           <select
             id='group'
             name='group'
             onChange={handleChange}
             onBlur={handleChange}
-            value={group}
           >
             <option value=''>Select a group</option>
             {groups.map(group => (
@@ -104,8 +81,8 @@ class AddBeerForm extends Component {
   }
 }
 
-AddBeerForm.propTypes = {
+EditGroupsForm.propTypes = {
   firebase: object,
 };
 
-export default withFirebase(AddBeerForm);
+export default withFirebase(EditGroupsForm);

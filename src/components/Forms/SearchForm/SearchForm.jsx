@@ -1,28 +1,34 @@
 import React from 'react';
 
-import './SearchForm.css';
+import Form from '../Form/Form';
+
+const handleSubmit = e => {
+  e.preventDefault();
+};
 
 const SearchForm = () => (
-  <form>
-    <fieldset className='search-form-fieldset'>
-      <legend className='search-form-legend'>Find A Beer</legend>
-      <div className='search-form-fields'>
-        <label className='search-form-label' htmlFor='name'>
-          Beer Name:
-          <input className='search-form-input' id='name' type='text' />
-        </label>
-        <label className='search-form-label' htmlFor='Brewery'>
-          Brewery:
-          <input className='search-form-input' id='Brewery' type='text' />
-        </label>
-      </div>
-      <div className='search-form-button-container'>
-        <button className='search-form-button' type='submit'>
-          Search
-        </button>
-      </div>
-    </fieldset>
-  </form>
+  <Form legend='Find A Beer' submit='Search' onSubmit={handleSubmit}>
+    <label className='form-label' htmlFor='beer'>
+      Beer Name:
+      <input
+        className='form-input'
+        id='beer'
+        name='beer'
+        placeholder='Fancy Brew IPA'
+        type='text'
+      />
+    </label>
+    <label className='form-label' htmlFor='brewery'>
+      Brewery:
+      <input
+        className='form-input'
+        id='brewery'
+        name='brewery'
+        placeholder='Fancy Brewing Co.'
+        type='text'
+      />
+    </label>
+  </Form>
 );
 
 export default SearchForm;
