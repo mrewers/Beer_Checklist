@@ -8,16 +8,6 @@
   display: flex;
 }
 
-.toggle-track {
-  background-color: #bdbdbd;
-  border-radius: 20px;
-  display: inline-block;
-  height: 20px;
-  position: absolute;
-  transition: all 0.3s;
-  width: 40px;
-}
-
 .toggle-handle {
   background-color: white;
   border-radius: 18px;
@@ -36,6 +26,16 @@
 
 .toggle-label {
   margin: 0.5rem 0;
+}
+
+.toggle-track {
+  background-color: #bdbdbd;
+  border-radius: 20px;
+  display: inline-block;
+  height: 21px;
+  position: absolute;
+  transition: all 0.3s;
+  width: 40px;
 }
 
 .toggle-track.toggled {
