@@ -8,12 +8,13 @@ import { withFirebase } from '../../../firebase';
 class EditGroupsForm extends Component {
   state = {
     group: '',
+    message: '',
     title: '',
   };
 
   render() {
-    const { group, title } = this.state;
-    const { firebaseAddGroup } = this.props.firebase;
+    const { group, message, title } = this.state;
+    const { firebaseAddGroup, firebaseDeleteGroup } = this.props.firebase;
 
     const handleChange = e => {
       const { name, value } = e.target;
@@ -29,17 +30,35 @@ class EditGroupsForm extends Component {
       e.preventDefault();
 
       if (title) {
-        firebaseAddGroup(title);
+        firebaseAddGroup(title)
+          .then(docRef =>
+            this.setState({
+              message: `Added the group "${title}" (id: ${docRef.id})`,
+            })
+          )
+          .catch(error =>
+            this.setState({
+              message: `Error adding the group "${title}": ${error}`,
+            })
+          );
       }
       if (group) {
-        console.log(group);
+        firebaseDeleteGroup(group)
+          .then(() =>
+            this.setState({
+              message: `Group successfully deleted (id: ${group})`,
+            })
+          )
+          .catch(error => {
+            this.setState({ message: `Error removing group: ${error}` });
+          });
       }
 
       this.setState({ group: '', title: '' });
     };
 
     return (
-      <Form legend='Edit Groups' submit='Add Group' onSubmit={handleSubmit}>
+      <Form legend='Edit Groups' submit='Edit Groups' onSubmit={handleSubmit}>
         <label className='form-label' htmlFor='title'>
           Add Group:
           <input
@@ -56,6 +75,7 @@ class EditGroupsForm extends Component {
           label='Delete Group:'
           value={group}
         />
+        {message && <p className='form-message'>{message}</p>}
       </Form>
     );
   }

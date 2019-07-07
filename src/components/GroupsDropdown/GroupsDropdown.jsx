@@ -12,7 +12,6 @@ class GroupsDropdown extends Component {
     const { firebaseGetGroups } = this.props.firebase;
 
     firebaseGetGroups()
-      .get()
       .then(querySnapshot =>
         querySnapshot.docs.map(doc => ({
           id: doc.id,
@@ -38,7 +37,7 @@ class GroupsDropdown extends Component {
         >
           <option value=''>Select a group</option>
           {groups.map(group => (
-            <option key={group.id} value={group.title}>
+            <option key={group.id} value={group.id}>
               {group.title}
             </option>
           ))}

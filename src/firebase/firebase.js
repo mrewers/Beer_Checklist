@@ -49,18 +49,22 @@ class Firebase {
 
   // Get all groups from the database
   firebaseGetGroups = () => {
-    return this.db.collection('groups');
+    return this.db.collection('groups').get();
+  };
+
+  // Delete a single group by id
+  firebaseDeleteGroup = id => {
+    return this.db
+      .collection('groups')
+      .doc(id)
+      .delete();
   };
 
   // Add a group to the database
   firebaseAddGroup = title => {
-    this.db
-      .collection('groups')
-      .add({
-        title,
-      })
-      .then(docRef => console.log(`Group ${title} added with id: ${docRef.id}`))
-      .catch(error => console.error(`Error adding record: ${error}`));
+    return this.db.collection('groups').add({
+      title,
+    });
   };
 
   // Add a beer to the database

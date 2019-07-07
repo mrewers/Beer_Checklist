@@ -2,6 +2,22 @@
   margin: 1rem 0;
 }
 
+.form-button {
+  background-color: #0197f6;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 2px 1px 3px 2px #e0e0e0;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+}
+
+.form-button-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .form-fields {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -33,18 +49,7 @@
   padding: 0.25rem 3rem;
 }
 
-.form-button {
-  background-color: #0197f6;
-  border: none;
-  border-radius: 4px;
-  box-shadow: 2px 1px 3px 2px #e0e0e0;
-  color: white;
-  cursor: pointer;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-}
-
-.form-button-container {
-  display: flex;
-  flex-direction: row-reverse;
+.form-message {
+  color: #bdbdbd;
+  font-size: 0.8rem;
 }
