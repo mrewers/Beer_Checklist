@@ -68,6 +68,15 @@ class Firebase {
   };
 
   // Add a beer to the database
+  firebaseAddBeer = (beer, brewery, group, price) => {
+    return this.db.collection('beers').add({
+      beer,
+      brewery,
+      checked: false,
+      group,
+      price,
+    });
+  };
 }
 
 export default Firebase;

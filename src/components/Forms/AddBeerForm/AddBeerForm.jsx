@@ -10,11 +10,13 @@ class AddBeerForm extends Component {
     beer: '',
     brewery: '',
     group: '',
+    message: '',
     price: '',
   };
 
   render() {
-    const { beer, brewery, group, price } = this.state;
+    const { beer, brewery, group, message, price } = this.state;
+    const { firebaseAddBeer } = this.props.firebase;
 
     const handleChange = e => {
       const { name, value } = e.target;
@@ -26,7 +28,19 @@ class AddBeerForm extends Component {
 
     const handleSubmit = e => {
       e.preventDefault();
-      console.log(this.state);
+      firebaseAddBeer(beer, brewery, group, price)
+        .then(docRef =>
+          this.setState({
+            message: `Added "${beer}" (id: ${docRef.id})`,
+          })
+        )
+        .catch(error =>
+          this.setState({
+            message: `Error adding "${beer}": ${error}`,
+          })
+        );
+
+      this.setState({ beer: '', brewery: '', group: '', price: '' });
     };
 
     return (
@@ -69,6 +83,7 @@ class AddBeerForm extends Component {
           label='Add to Group:'
           value={group}
         />
+        {message && <p className='form-message'>{message}</p>}
       </Form>
     );
   }
