@@ -1,4 +1,5 @@
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const CompressionPlugin = require('compression-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -21,7 +22,19 @@ module.exports = (env, arvg) => {
     optimization: {
       minimizer:
         arvg.mode === 'production'
-          ? [new UglifyJsPlugin({}), new OptimizeCSSAssetsPlugin({})]
+          ? [
+              new CompressionPlugin({
+                filename: '[path].br[query]',
+                algorithm: 'brotliCompress',
+                test: /\.(js|css|html|svg)$/,
+                compressionOptions: { level: 11 },
+                threshold: 10240,
+                minRatio: 0.8,
+                deleteOriginalAssets: false,
+              }),
+              new OptimizeCSSAssetsPlugin({}),
+              new UglifyJsPlugin({}),
+            ]
           : [],
     },
     output: {
