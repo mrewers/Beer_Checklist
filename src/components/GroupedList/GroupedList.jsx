@@ -1,18 +1,18 @@
 import React from 'react';
 import { array } from 'prop-types';
 
-import List from './List/List';
+import List from '../List/List';
 
 const GroupedList = ({ beers, groups }) => (
   <article>
     {groups.map(group => {
-      const beersIngroups = beers.filter(beer => beer.group === group);
+      const beersInGroup = beers.filter(beer => beer.group === group.id);
 
-      if (beersIngroups.length > 0) {
+      if (beersInGroup.length > 0) {
         return (
-          <article key={group}>
-            <h3>{group.toUpperCase()}</h3>
-            <List beers={beersIngroups} />
+          <article key={group.id}>
+            <h3>{group.title.toUpperCase()}</h3>
+            <List beers={beersInGroup} />
           </article>
         );
       } else {
