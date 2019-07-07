@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import AdminPage from './Pages/AdminPage/AdminPage';
-import LoginPage from './Pages/LoginPage/LoginPage';
-import MainPage from './Pages/MainPage/MainPage';
+import AdminPage from 'pages/AdminPage/AdminPage';
+import LoginPage from 'pages/LoginPage/LoginPage';
+import MainPage from 'pages/MainPage/MainPage';
 
-import * as ROUTES from '../constants/routes';
+import * as ROUTES from 'constants/routes';
 
 import './App.css';
 

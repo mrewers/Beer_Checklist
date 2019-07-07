@@ -1,7 +1,19 @@
 {
-  "presets": [
-    "@babel/preset-env",
-    "@babel/preset-react"
-  ],
-  "plugins": ["@babel/plugin-proposal-class-properties"]
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    [
+      "babel-plugin-module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "apis": "./src/apis",
+          "components": "./src/components",
+          "constants": "./src/constants",
+          "fireb": "./src/firebase",
+          "pages": "./src/components/Pages"
+        }
+      }
+    ]
+  ]
 }

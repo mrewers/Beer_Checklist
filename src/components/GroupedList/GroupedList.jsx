@@ -1,7 +1,7 @@
 import React from 'react';
 import { array } from 'prop-types';
 
-import List from '../List/List';
+import List from 'components/List/List';
 
 const GroupedList = ({ beers, groups }) => (
   <article>

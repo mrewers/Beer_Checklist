@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { object } from 'prop-types';
 
-import Form from '../Form/Form';
-import GroupsDropdown from '../../GroupsDropdown/GroupsDropdown';
-import { withFirebase } from '../../../firebase';
+import Form from 'components/Forms/Form/Form';
+import GroupsDropdown from 'components/GroupsDropdown/GroupsDropdown';
+import { withFirebase } from 'fireb';
 
 class AddBeerForm extends Component {
   state = {

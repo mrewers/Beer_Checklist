@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
-import Toggle from '../Toggle/Toggle';
-import { AppContext } from '../Pages/MainPage/MainPage';
+import Toggle from 'components/Toggle/Toggle';
+import { AppContext } from 'components/Pages/MainPage/MainPage';
 
 import './Options.css';
 

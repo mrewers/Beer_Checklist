@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { func, object, string } from 'prop-types';
 
-import { withFirebase } from '../../firebase';
+import { withFirebase } from 'fireb';
 
 class GroupsDropdown extends Component {
   state = {
