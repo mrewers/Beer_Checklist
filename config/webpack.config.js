@@ -1,5 +1,6 @@
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const CompressionPlugin = require('compression-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -49,12 +50,18 @@ module.exports = (env, arvg) => {
         generateStatsFile: true,
         statsFilename: './stats.json',
       }),
+      new CopyPlugin([
+        {
+          from: `${paths.appStatic}/og.png`,
+          to: `${paths.appDist}/static/og.png`,
+        },
+      ]),
       new Dotenv({
         path: paths.dotenv,
         safe: true,
       }),
       new HtmlWebpackPlugin({
-        favicon: `${paths.appStatic}/iip_logo.png`,
+        favicon: `${paths.appStatic}/favicon.png`,
         template: paths.appHtml,
       }),
       new MiniCssExtractPlugin({
