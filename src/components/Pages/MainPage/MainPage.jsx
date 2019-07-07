@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { object } from 'prop-types';
 
-import List from '../../List/List';
-import GroupedList from '../../GroupedList/GroupedList';
-import Options from '../../Options/Options';
-import { withFirebase } from '../../../firebase';
+import Countdown from 'components/Countdown/Countdown';
+import GroupedList from 'components/GroupedList/GroupedList';
+import List from 'components/List/List';
+import Options from 'components/Options/Options';
+import { withFirebase } from 'fireb';
 
 import './MainPage.css';
 
@@ -46,6 +47,7 @@ const MainPage = ({ firebase }) => {
   return (
     <section className='mainpage-container'>
       <h1 className='mainpage-header'>RIP IIP</h1>
+      <Countdown />
       <AppContext.Provider value={{ toggleFinished, toggleGroups }}>
         <Options />
         <hr />
