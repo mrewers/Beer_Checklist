@@ -47,9 +47,9 @@ class Firebase {
       });
   };
 
-  // Get all groups from the database
-  firebaseGetGroups = () => {
-    return this.db.collection('groups').get();
+  // Get collection data from the database
+  firebaseGetCollection = collection => {
+    return this.db.collection(collection).get();
   };
 
   // Delete a single group by id

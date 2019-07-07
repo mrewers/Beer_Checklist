@@ -9,9 +9,9 @@ class GroupsDropdown extends Component {
   };
 
   componentDidMount() {
-    const { firebaseGetGroups } = this.props.firebase;
+    const { firebaseGetCollection } = this.props.firebase;
 
-    firebaseGetGroups()
+    firebaseGetCollection('groups')
       .then(querySnapshot =>
         querySnapshot.docs.map(doc => ({
           id: doc.id,
