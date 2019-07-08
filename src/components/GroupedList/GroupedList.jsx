@@ -1,9 +1,9 @@
 import React from 'react';
-import { array } from 'prop-types';
+import { array, bool } from 'prop-types';
 
 import List from 'components/List/List';
 
-const GroupedList = ({ beers, groups }) => (
+const GroupedList = ({ beers, groups, strikethrough }) => (
   <article>
     {groups.map(group => {
       const beersInGroup = beers.filter(beer => beer.data.group === group.id);
@@ -12,7 +12,7 @@ const GroupedList = ({ beers, groups }) => (
         return (
           <article key={group.id}>
             <h3>{group.title.toUpperCase()}</h3>
-            <List beers={beersInGroup} />
+            <List beers={beersInGroup} strikethrough={strikethrough} />
           </article>
         );
       } else {
@@ -25,6 +25,7 @@ const GroupedList = ({ beers, groups }) => (
 GroupedList.propTypes = {
   beers: array,
   groups: array,
+  strikethrough: bool,
 };
 
 export default GroupedList;

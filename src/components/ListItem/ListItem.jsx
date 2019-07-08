@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { object, string } from 'prop-types';
+import { bool, object, string } from 'prop-types';
 
 import { withFirebase } from 'fireb';
 
 import './ListItem.scss';
 
-const ListItem = ({ beer, firebase, id }) => {
+const ListItem = ({ beer, firebase, id, strikethrough }) => {
   const [checked, setChecked] = useState(beer.checked);
 
   const handleCheckbox = () => {
@@ -18,7 +18,7 @@ const ListItem = ({ beer, firebase, id }) => {
     setChecked(toggle);
   };
 
-  const isActive = !checked ? 'active' : 'checked';
+  const isActive = strikethrough && checked ? 'checked' : 'active';
 
   return (
     <article className='list-item'>
@@ -39,6 +39,7 @@ ListItem.propTypes = {
   beer: object,
   firebase: object,
   id: string,
+  strikethrough: bool,
 };
 
 export default withFirebase(ListItem);

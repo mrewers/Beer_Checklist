@@ -56,8 +56,10 @@ const MainPage = ({ firebase }) => {
       <AppContext.Provider value={{ toggleFinished, toggleGroups }}>
         <Options />
         <hr />
-        {showGroups && <GroupedList beers={isFiltered} groups={groups} />}
-        {!showGroups && <List beers={isFiltered} />}
+        {showGroups && (
+          <GroupedList beers={isFiltered} groups={groups} strikethrough />
+        )}
+        {!showGroups && <List beers={isFiltered} strikethrough />}
       </AppContext.Provider>
     </Page>
   );
