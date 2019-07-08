@@ -6,7 +6,7 @@ import List from 'components/List/List';
 const GroupedList = ({ beers, groups }) => (
   <article>
     {groups.map(group => {
-      const beersInGroup = beers.filter(beer => beer.group === group.id);
+      const beersInGroup = beers.filter(beer => beer.data.group === group.id);
 
       if (beersInGroup.length > 0) {
         return (

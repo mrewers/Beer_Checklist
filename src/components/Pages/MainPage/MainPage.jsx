@@ -19,7 +19,12 @@ const MainPage = ({ firebase }) => {
   useEffect(() => {
     firebase
       .firebaseGetCollection('beers')
-      .then(querySnapshot => querySnapshot.docs.map(doc => doc.data()))
+      .then(querySnapshot =>
+        querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      )
       .then(data => setBeers(data));
   }, []);
 
@@ -44,6 +49,10 @@ const MainPage = ({ firebase }) => {
     setShowGroups(!showGroups);
   };
 
+  const isFiltered = showFinished
+    ? beers
+    : beers.filter(beer => beer.data.checked === false);
+
   return (
     <section className='mainpage-container'>
       <h1 className='mainpage-header'>RIP IIP</h1>
@@ -51,8 +60,8 @@ const MainPage = ({ firebase }) => {
       <AppContext.Provider value={{ toggleFinished, toggleGroups }}>
         <Options />
         <hr />
-        {showGroups && <GroupedList beers={beers} groups={groups} />}
-        {!showGroups && <List beers={beers} />}
+        {showGroups && <GroupedList beers={isFiltered} groups={groups} />}
+        {!showGroups && <List beers={isFiltered} />}
       </AppContext.Provider>
     </section>
   );
