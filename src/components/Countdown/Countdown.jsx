@@ -3,7 +3,7 @@ import { object } from 'prop-types';
 
 import { withFirebase } from 'fireb';
 
-import './Countdown.css';
+import './Countdown.scss';
 
 const Countdown = ({ firebase }) => {
   const [remaining, setRemaining] = useState(100);

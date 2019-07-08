@@ -1,7 +1,7 @@
 import React from 'react';
 import { func, node, string } from 'prop-types';
 
-import './Form.css';
+import './Form.scss';
 
 const Form = ({ children, legend, onSubmit, submit }) => (
   <form className='form' onSubmit={onSubmit}>

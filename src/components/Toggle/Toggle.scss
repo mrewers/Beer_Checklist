@@ -1,0 +1,45 @@
+@import 'styles/colors.scss';
+
+.toggle {
+  display: inline-block;
+  margin: 0.5rem;
+  position: relative;
+
+  &-container {
+    display: flex;
+  }
+
+  &-handle {
+    background-color: $white;
+    border-radius: 18px;
+    content: '';
+    height: 18px;
+    left: 1px;
+    position: absolute;
+    top: 1px;
+    transition: all 0.3s;
+    width: 18px;
+  }
+
+  &-handle.toggled {
+    transform: translateX(20px);
+  }
+
+  &-label {
+    margin: 0.5rem 0;
+  }
+
+  &-track {
+    background-color: $grey-medium;
+    border-radius: 20px;
+    display: inline-block;
+    height: 21px;
+    position: absolute;
+    transition: all 0.3s;
+    width: 41px;
+  }
+
+  &-track.toggled {
+    background-color: $blue-light;
+  }
+}

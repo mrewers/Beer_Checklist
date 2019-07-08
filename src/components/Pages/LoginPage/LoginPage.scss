@@ -1,0 +1,35 @@
+@import 'styles/colors.scss';
+
+.login {
+  &-button {
+    background-color: $blue-light;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 2px 1px 3px 2px $grey-light;
+    color: $white;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+  }
+
+  &-container {
+    align-items: center;
+    background-color: $grey-light;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    margin: -1rem;
+  }
+
+  &-modal {
+    align-items: center;
+    background-color: $white;
+    border: 1px solid $grey-medium;
+    border-radius: 8px;
+    box-shadow: 2px 1px 3px 2px $grey-medium;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    width: max-content;
+  }
+}

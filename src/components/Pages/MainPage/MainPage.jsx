@@ -7,7 +7,7 @@ import List from 'components/List/List';
 import Options from 'components/Options/Options';
 import { withFirebase } from 'fireb';
 
-import './MainPage.css';
+import './MainPage.scss';
 
 export const AppContext = React.createContext();
 

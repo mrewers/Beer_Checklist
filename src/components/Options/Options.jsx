@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import Toggle from 'components/Toggle/Toggle';
 import { AppContext } from 'components/Pages/MainPage/MainPage';
 
-import './Options.css';
+import './Options.scss';
 
 const Options = () => {
   const { toggleFinished, toggleGroups } = useContext(AppContext);

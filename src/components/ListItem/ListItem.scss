@@ -1,0 +1,21 @@
+@import 'styles/colors.scss';
+
+.list {
+  &-item {
+    border: 1px solid $grey-light;
+    box-shadow: 2px 1px 3px 2px $grey-light;
+    display: grid;
+    grid-template-columns: 10% 40% 40% 10%;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+
+    &-checkbox {
+      justify-self: start;
+    }
+  }
+}
+
+.checked {
+  text-decoration: line-through;
+  color: $grey-medium;
+}

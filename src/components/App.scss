@@ -1,3 +1,5 @@
+@import 'styles/colors.scss';
+
 @import url('https://fonts.googleapis.com/css?family=Rubik|Trirong&display=swap');
 
 html {
@@ -5,7 +7,7 @@ html {
 }
 
 body {
-  color: #1c1d23;
+  color: $black;
   margin: 0;
   padding: 1rem;
 }
@@ -42,23 +44,15 @@ h4 {
 }
 
 hr {
-  color: #e0e0e0;
+  color: $grey-light;
   margin-bottom: 1rem;
 }
 
 input,
 option,
 select {
-  border: 1px solid #e0e0e0;
-  box-shadow: inset 0px 0px 3px #e0e0e0;
+  border: 1px solid $grey-light;
+  box-shadow: inset 0px 0px 3px $grey-light;
   font-family: 'Rubik', sans-serif;
   padding: 0.15rem 0.5rem;
 }
-
-/*
-Potential colors to use:
-navy - #02182b
-blue-grey - #448fa3
-red - #ef233c
-deep red - #d90429
-*/

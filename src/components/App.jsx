@@ -7,7 +7,7 @@ import MainPage from 'pages/MainPage/MainPage';
 
 import * as ROUTES from 'constants/routes';
 
-import './App.css';
+import './App.scss';
 
 const App = () => (
   <div className='app-routes'>

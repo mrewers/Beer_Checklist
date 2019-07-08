@@ -11,7 +11,8 @@
           "components": "./src/components",
           "constants": "./src/constants",
           "fireb": "./src/firebase",
-          "pages": "./src/components/Pages"
+          "pages": "./src/components/Pages",
+          "styles": "./src/styles"
         }
       }
     ]

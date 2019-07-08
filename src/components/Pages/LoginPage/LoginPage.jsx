@@ -3,7 +3,7 @@ import { object } from 'prop-types';
 
 import { withFirebase } from 'fireb';
 
-import './LoginPage.css';
+import './LoginPage.scss';
 
 const LoginPage = ({ firebase }) => {
   return (

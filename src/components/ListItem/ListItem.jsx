@@ -3,7 +3,7 @@ import { object, string } from 'prop-types';
 
 import { withFirebase } from 'fireb';
 
-import './ListItem.css';
+import './ListItem.scss';
 
 const ListItem = ({ beer, firebase, id }) => {
   const [checked, setChecked] = useState(beer.checked);

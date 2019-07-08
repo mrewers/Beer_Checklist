@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { func, string } from 'prop-types';
 
-import './Toggle.css';
+import './Toggle.scss';
 
 const Toggle = ({ callback, label }) => {
   const [toggled, setToggled] = useState(true);
@@ -16,7 +16,13 @@ const Toggle = ({ callback, label }) => {
   return (
     <div className='toggle-container'>
       <label className='toggle-label'>{label}</label>
-      <div className='toggle' onClick={handleToggle} onKeyUp={callback} role='button' tabIndex='0'>
+      <div
+        className='toggle'
+        onClick={handleToggle}
+        onKeyUp={callback}
+        role='button'
+        tabIndex='0'
+      >
         <div className={`toggle-track ${isToggled}`} />
         <div className={`toggle-handle ${isToggled}`} />
       </div>

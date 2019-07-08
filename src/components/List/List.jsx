@@ -3,7 +3,7 @@ import { array } from 'prop-types';
 
 import ListItem from 'components/ListItem/ListItem';
 
-import './List.css';
+import './List.scss';
 
 const List = ({ beers }) => (
   <article className='list-container'>
