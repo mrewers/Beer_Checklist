@@ -6,7 +6,7 @@ import { withFirebase } from 'fireb';
 import './Countdown.scss';
 
 const Countdown = ({ firebase }) => {
-  const [remaining, setRemaining] = useState(100);
+  const [remaining, setRemaining] = useState(null);
 
   useEffect(() => {
     firebase
@@ -16,6 +16,8 @@ const Countdown = ({ firebase }) => {
       )
       .then(data => setRemaining(100 - data.length));
   });
+
+  if (!remaining) return null;
 
   return <p className='countdown-text'>{`Only ${remaining} beers left!`}</p>;
 };

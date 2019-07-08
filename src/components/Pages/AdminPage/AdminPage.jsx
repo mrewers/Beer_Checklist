@@ -2,16 +2,17 @@ import React from 'react';
 
 import AddBeerForm from 'components/Forms/AddBeerForm/AddBeerForm';
 import EditGroupsForm from 'components/Forms/EditGroupsForm/EditGroupsForm';
+import Page from 'pages/Page/Page';
 // import SearchForm from 'components/Forms/SearchForm/SearchForm';
 
 import './AdminPage.scss';
 
 const AdminPage = () => (
-  <article className='adminpage-container'>
+  <Page header>
     {/* <SearchForm /> */}
     <AddBeerForm />
     <EditGroupsForm />
-  </article>
+  </Page>
 );
 
 export default AdminPage;
