@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
-import { object } from 'prop-types';
+import { object, string } from 'prop-types';
+
+import { withFirebase } from 'fireb';
 
 import './ListItem.css';
 
-const ListItem = ({ beer }) => {
+const ListItem = ({ beer, firebase, id }) => {
   const [checked, setChecked] = useState(beer.checked);
 
   const handleCheckbox = () => {
     const toggle = !checked;
+
+    const data = { checked: toggle };
+
+    firebase.firebaseUpdateDoc('beers', data, id);
+
     setChecked(toggle);
   };
 
@@ -30,6 +37,8 @@ const ListItem = ({ beer }) => {
 
 ListItem.propTypes = {
   beer: object,
+  firebase: object,
+  id: string,
 };
 
-export default ListItem;
+export default withFirebase(ListItem);

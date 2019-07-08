@@ -52,6 +52,14 @@ class Firebase {
     return this.db.collection(collection).get();
   };
 
+  // Update a document in the database
+  firebaseUpdateDoc = (collection, data, id) => {
+    return this.db
+      .collection(collection)
+      .doc(id)
+      .set(data, { merge: true });
+  };
+
   // Delete a single group by id
   firebaseDeleteGroup = id => {
     return this.db

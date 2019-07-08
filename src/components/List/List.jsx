@@ -8,7 +8,7 @@ import './List.css';
 const List = ({ beers }) => (
   <article className='list-container'>
     {beers.map(beer => (
-      <ListItem key={beer.id} beer={beer.data} />
+      <ListItem beer={beer.data} id={beer.id} key={beer.id} />
     ))}
   </article>
 );
