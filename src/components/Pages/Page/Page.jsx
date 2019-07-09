@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { bool, node } from 'prop-types';
 
-import Header from 'components/Header/Header';
+const Header = lazy(() =>
+  import(/* webpackChunkName: "header" */ 'components/Header/Header')
+);
 
 import './Page.scss';
 

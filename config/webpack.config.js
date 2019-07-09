@@ -39,9 +39,14 @@ module.exports = (env, arvg) => {
           : [],
     },
     output: {
+      chunkFilename:
+        arvg.mode === 'production'
+          ? 'js/[name].[contenthash].js'
+          : 'js/[name].js',
       path: paths.appDist,
       publicPath: '/',
-      filename: 'js/rip.js',
+      filename:
+        arvg.mode === 'production' ? 'js/rip.[contenthash].js' : 'js/rip.js',
       sourceMapFilename: 'js/rip.js.map',
     },
     plugins: [
@@ -65,8 +70,8 @@ module.exports = (env, arvg) => {
         template: paths.appHtml,
       }),
       new MiniCssExtractPlugin({
-        filename:
-          arvg.mode === 'production' ? 'css/rip.min.css' : 'css/rip.css',
+        filename: 'css/[name].[contenthash].css',
+        moduleFilename: ({ name }) => `${name.replace('/js/', '/css/')}.css`,
       }),
     ],
     devServer: {
